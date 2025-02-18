@@ -142,7 +142,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 </button>
             </div>
         `;
-        
         // เพิ่มการเปิด pointer-events ทันทีที่เรียกฟังก์ชัน
         musicContainer.style.pointerEvents = 'auto';
         
@@ -176,6 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Create YouTube player
+        
         let player;
         
         // Initialize YouTube player immediately
@@ -188,6 +188,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 playlist: setVideoId,
                 fs: 0
             },
+            
+
             events: {
                 onReady: function(event) {
                     const vinyl = document.querySelector('.vinyl-record');
@@ -280,7 +282,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
-
+        document.addEventListener("click", () => {
+            if (player && player.playVideo) {
+                player.playVideo();
+            }
+        }, { once: true }); // ให้เล่นเพลงเมื่อแตะจอครั้งแรก
+        
         // Animate transition
         const tl = gsap.timeline();
         
