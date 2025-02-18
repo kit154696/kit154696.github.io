@@ -1063,3 +1063,30 @@ body {
 #youtube-player iframe {
     pointer-events: auto !important;
 }
+.mobile-play-button {
+    display: none;
+    position: fixed;
+    bottom: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ff1493;
+    color: white;
+    font-size: 18px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s;
+    z-index: 1000;
+}
+
+.mobile-play-button:hover {
+    background: #ff69b4;
+}
+
+@media (max-width: 768px) {  
+    .mobile-play-button {
+        display: block;
+    }
+}

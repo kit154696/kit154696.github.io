@@ -110,6 +110,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     <i class="ri-play-fill"></i>
                 </div>
                 <div id="youtube-player"></div>
+                <button class="mobile-play-button">
+        <i class="ri-play-fill"></i> เล่นเพลง
+    </button>
             </div>
             <div class="time-together opacity-0">
                 <div id="couple-animation" class="couple-animation mb-8"></div>
@@ -901,34 +904,34 @@ function handlePlay(e) {
     }
 }
 document.addEventListener('DOMContentLoaded', () => {
-    const mobilePlayButton = document.querySelector('.mobile-play-button');
-    const vinylRecord = document.querySelector('.vinyl-record');
-
-    // ตรวจสอบว่ามี YouTube Player อยู่หรือไม่
-    let player;
-    function getPlayer() {
-        if (!player) {
-            player = new YT.Player('youtube-player', {
-                videoId: setVideoId, // ใส่ ID ของวิดีโอ YouTube
-                playerVars: {
-                    autoplay: 0, 
-                    controls: 0, 
-                    loop: 1,
-                    playlist: setVideoId,
-                    fs: 0
-                }
-            });
+    document.addEventListener('DOMContentLoaded', () => {
+        const mobilePlayButton = document.querySelector('.mobile-play-button');
+        const vinylRecord = document.querySelector('.vinyl-record');
+        let player;
+    
+        function getPlayer() {
+            if (!player) {
+                player = new YT.Player('youtube-player', {
+                    videoId: setVideoId,
+                    playerVars: {
+                        autoplay: 0, 
+                        controls: 0, 
+                        loop: 1,
+                        playlist: setVideoId,
+                        fs: 0
+                    }
+                });
+            }
+            return player;
         }
-        return player;
-    }
-
-    // เมื่อกดปุ่ม Play บนมือถือ
-    mobilePlayButton.addEventListener('click', () => {
-        const ytPlayer = getPlayer();
-        if (ytPlayer.getPlayerState() !== YT.PlayerState.PLAYING) {
-            ytPlayer.playVideo();
-            vinylRecord.classList.add('playing');
-            mobilePlayButton.style.display = 'none'; // ซ่อนปุ่มหลังจากกดเล่น
-        }
+    
+        mobilePlayButton.addEventListener('click', () => {
+            const ytPlayer = getPlayer();
+            if (ytPlayer.getPlayerState() !== YT.PlayerState.PLAYING) {
+                ytPlayer.playVideo();
+                vinylRecord.classList.add('playing');
+                mobilePlayButton.style.display = 'none'; // ซ่อนปุ่มหลังจากกดเล่น
+            }
+        });
     });
-});
+});    
