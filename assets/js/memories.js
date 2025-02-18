@@ -892,3 +892,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+function handlePlay(e) {
+    e.preventDefault();
+    e.stopPropagation(); // ป้องกัน event bubble
+    
+    if (player && player.playVideo) {
+        player.playVideo();
+    }
+}

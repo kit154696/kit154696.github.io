@@ -1060,3 +1060,6 @@ body {
         opacity 0.5s ease,
         transform 0.5s ease;
 }
+#youtube-player iframe {
+    pointer-events: auto !important;
+}
