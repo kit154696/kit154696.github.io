@@ -900,3 +900,35 @@ function handlePlay(e) {
         player.playVideo();
     }
 }
+document.addEventListener('DOMContentLoaded', () => {
+    const mobilePlayButton = document.querySelector('.mobile-play-button');
+    const vinylRecord = document.querySelector('.vinyl-record');
+
+    // ตรวจสอบว่ามี YouTube Player อยู่หรือไม่
+    let player;
+    function getPlayer() {
+        if (!player) {
+            player = new YT.Player('youtube-player', {
+                videoId: setVideoId, // ใส่ ID ของวิดีโอ YouTube
+                playerVars: {
+                    autoplay: 0, 
+                    controls: 0, 
+                    loop: 1,
+                    playlist: setVideoId,
+                    fs: 0
+                }
+            });
+        }
+        return player;
+    }
+
+    // เมื่อกดปุ่ม Play บนมือถือ
+    mobilePlayButton.addEventListener('click', () => {
+        const ytPlayer = getPlayer();
+        if (ytPlayer.getPlayerState() !== YT.PlayerState.PLAYING) {
+            ytPlayer.playVideo();
+            vinylRecord.classList.add('playing');
+            mobilePlayButton.style.display = 'none'; // ซ่อนปุ่มหลังจากกดเล่น
+        }
+    });
+});
