@@ -111,8 +111,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div id="youtube-player"></div>
                 <button class="mobile-play-button">
-        <i class="ri-play-fill"></i> เล่นเพลง
-    </button>
+                    <i class="ri-play-fill"></i> เล่นเพลง
+                </button>
             </div>
             <div class="time-together opacity-0">
                 <div id="couple-animation" class="couple-animation mb-8"></div>

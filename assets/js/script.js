@@ -252,3 +252,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+document.addEventListener("DOMContentLoaded", function () {
+    const playButton = document.querySelector(".mobile-play-button");
+    const youtubeIframe = document.querySelector("#youtube-player");
+    
+    playButton.addEventListener("click", function () {
+        // ซ่อนปุ่มเมื่อกด
+        playButton.style.display = "none";
+        
+        // ดึงวิดีโอจาก iframe API และสั่งเล่น
+        const player = new YT.Player(youtubeIframe, {
+            events: {
+                "onReady": function (event) {
+                    event.target.playVideo();
+                }
+            }
+        });
+    });
+});
